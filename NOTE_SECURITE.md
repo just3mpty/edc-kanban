@@ -17,7 +17,6 @@
 | Erreurs sans détail | `src/middlewares/error.middleware.ts` | Erreur 500 générique, identifiant invalide renvoyé en 400 |
 | Logs sans secret | `src/config/db.ts` | Seuls l'hôte et le nom de la base sont écrits |
 | Dépendances à jour | `package-lock.json` | `npm audit fix` : 0 vulnérabilité |
-| Conteneur | `Dockerfile` | Image de production sans dépendances de développement, exécutée avec l'utilisateur `node` |
 
 La protection par JWT existait déjà : toutes les routes `/api/columns` et `/api/ofs` renvoient 401 sans jeton valide. C'est vérifié par les tests (`columns.test.ts`, `security.test.ts`) et avec `curl` (voir le guide de déploiement).
 

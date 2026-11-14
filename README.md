@@ -54,7 +54,7 @@ Toutes les routes `/api/columns` et `/api/ofs` demandent un jeton JWT (`Authoriz
 - **Stack existante conservée** : Node.js, Express 5, TypeScript, MongoDB avec Mongoose, validation Zod, logs Pino.
 - **Tests** : Vitest et Supertest sur l'application Express, avec une base MongoDB en mémoire. Aucun service externe n'est nécessaire et les tests restent isolés les uns des autres. 48 tests, dont les colonnes (`tests/columns.test.ts`) et la sécurité (`tests/security.test.ts`).
 - **Build** : `tsconfig.build.json` compile uniquement `src/`, pour que `npm start` et l'image Docker fonctionnent.
-- **Docker** : image `node:20-alpine` construite en deux étapes, sans dépendances de développement, exécutée avec un utilisateur non administrateur, avec un contrôle de santé sur `/health`. `docker-compose.yml` ajoute MongoDB 7 avec un volume persistant.
+- **Docker** : image `node:20-alpine` qui installe les dépendances, compile le TypeScript et lance `npm start`. `docker-compose.yml` ajoute MongoDB 7 avec un volume persistant.
 - **CI/CD** : GitHub Actions (`.github/workflows/ci.yml`) lance l'audit, le build, les tests et la construction de l'image. L'image est publiée sur `ghcr.io` à chaque release.
 
 ## Sécurité

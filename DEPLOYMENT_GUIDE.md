@@ -59,7 +59,7 @@ La première commande répond `{"status":"ok",...}`. La seconde répond 401, car
 
 ## Lancement avec Docker
 
-Le `Dockerfile` construit l'image en deux étapes : la première installe toutes les dépendances et compile le TypeScript, la seconde ne garde que les dépendances de production et le dossier `dist`, puis lance `npm start` avec l'utilisateur `node`.
+Le `Dockerfile` part de `node:20-alpine`, installe les dépendances, copie le code, le compile avec `npm run build`, puis lance `npm start`.
 
 API seule (avec une base MongoDB existante) :
 
